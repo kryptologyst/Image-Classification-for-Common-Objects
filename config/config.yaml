@@ -1,0 +1,58 @@
+# Configuration file for Image Classification Project
+
+# Model Configuration
+model:
+  name: "cnn_classifier"
+  input_shape: [32, 32, 3]
+  num_classes: 10
+  epochs: 10
+  batch_size: 64
+  learning_rate: 0.001
+  dropout_rate: 0.5
+
+# Data Configuration
+data:
+  dataset_name: "cifar10"
+  normalize: true
+  augment: false
+  validation_split: 0.2
+
+# Training Configuration
+training:
+  optimizer: "adam"
+  loss: "categorical_crossentropy"
+  metrics: ["accuracy"]
+  early_stopping:
+    enabled: true
+    patience: 5
+    monitor: "val_loss"
+  model_checkpoint:
+    enabled: true
+    save_best_only: true
+    monitor: "val_accuracy"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/training.log"
+
+# Paths
+paths:
+  data_dir: "data"
+  models_dir: "models"
+  logs_dir: "logs"
+  results_dir: "results"
+
+# CIFAR-10 Class Names
+class_names:
+  - "airplane"
+  - "automobile"
+  - "bird"
+  - "cat"
+  - "deer"
+  - "dog"
+  - "frog"
+  - "horse"
+  - "ship"
+  - "truck"
